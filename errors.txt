@@ -1,0 +1,10 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/scenes/day2.rpy", line 44: choice menuitem expects a non-empty block.
+    "Да, но у меня нет денег": 
+                               ^
+
+Ren'Py Version: Ren'Py 8.3.2.24090902
+Tue Dec 17 21:59:42 2024
