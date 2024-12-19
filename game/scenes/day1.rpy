@@ -17,6 +17,7 @@ label day1:
     gg "Нууу в моем плане нет точного времени, когда начать, да и я люблю точность, так что могу отдохнуть ровно до 11, а потом начну"
     gg "эти 34 минуты все равно ничего не решат\n{cps=5}...{/cps}"
     gg "А может мне все же сейчас начать работу? Быстрей начну, быстрей закончу."
+    play sound "audio/sounds/advent sin.mp3"
     noname "А ты знаешь, что отдых в работе тоже важен?"
     gg "Кто здесь?!"
 
@@ -24,13 +25,15 @@ label day1:
         xalign 0.15
         yalign 1.0
     with move
-    # show laziness calm1 at right
-
+    show laziness calm1
     laziness "Не бойся, я твой друг и защитник – Лень, не хочу, чтобы ты перетрудился"
     # laziness "Бу, испугался, не бойся это я твой друг!"
     gg "Защитник?"
+    show laziness angry_:
+        xalign 0.90
+        yalign 1.0
+    with move
     laziness "Конечно, кто-то же должен защищать людей от труда. Это обязанность лежит на моих хрупких плечах."
-
     menu:
         "Мда, мне бы не помешала такая защита":
             jump day1_choice_left_1
@@ -39,12 +42,20 @@ label day1:
 
 
 label day1_choice_left_1:
+    scene bg ggroom_light1
+    show laziness down_:
+        xalign 1.0 
+        yalign 1.0
+    show gg sleep_phone:
+        xalign 0.0
+        yalign 1.0
     laziness "Тогда давай я тебе помогу! Расслабься, ляг удобнее на подушку, включи телефон посмотри новостную ленту."
     laziness "Нравиться?"
     menu:
         "Очень. О, у “Милых котиков” новая запись!!! А NV выпустил новый трек!":
             jump day1_choice_left_2
         "Не особо, да и время близиться к 11, надо вставать и начинать работу.":
+            show gg sleep
             laziness "Полежи еще немного"
             menu:
                 "Ладно":
@@ -54,14 +65,17 @@ label day1_choice_left_1:
 
 
 label day1_choice_left_2:
+    show gg sleep
     laziness "Это хорошо, тебя в сон не тянет?"
     gg "Есть немного..."
     laziness "Тогда давай я тебе включу колыбельную и ты отоспишься, на свежую голову всегда приятней работать."
     menu:
         "Давай":
+            play music lullaby
             "Лень начинает играть на какой-то шарманке..."
-            # сюды музыку
             "Ты засыпаешь, Лень расстворяется..."
+            stop music fadeout 2.0
+            jump day2_begin
         "Нет, время к 11 подходит пора вставать.":
             jump day1_choice_right_2
 
@@ -82,6 +96,7 @@ label day1_choice_right_1:
 label day1_choice_right_2:
     laziness "Ты не знаешь, что теряешь. Не надо останся на кровати."
     gg "Нет, мне есть чем заняться уходи."
+    play sound "audio/sounds/advent sin.mp3"
     laziness "Неееееееет!!!"
     "Лень рассыпается, а ты садишься за работу."
     jump day2_begin
